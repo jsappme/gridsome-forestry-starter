@@ -1,8 +1,8 @@
 {
-  "footer": "Copyright &copy; 2019",
+  "footer": "Copyright &copy; 2020",
   "dark_mode": false,
-  "site_name": "Nichlas W. Andersen",
-  "site_description": "Creative technologist",
-  "hero_title": "Simplicity. Aesthetics. Value.",
-  "hero_subtitle": "Hi there, I'm an independent Digital Designer &amp; Art Director focused on digital design for brands that like to have fun."
+  "site_name": "Gridsomify",
+  "site_description": "Gridsomify provides Gridsome Shopify headless ecommerce site building, deployment and integration services.",
+  "hero_title": "Gridsome + Shopify = ❤️",
+  "hero_subtitle": "Gridsomify provides Gridsome Shopify headless ecommerce site building, deployment and integration services."
 }
