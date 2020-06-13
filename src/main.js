@@ -12,9 +12,10 @@ import Notifications from 'vue-notification/dist/ssr.js'
 import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-fetch'
 
-export default function(Vue, { head }) {
+export default function(Vue, { appOptions }) {
+
   Vue.component("Layout", DefaultLayout);
-  head.bodyAttrs = {
+  appOptions.bodyAttrs = {
     class: settings.dark_mode ? "dark" : ""
   };
 
