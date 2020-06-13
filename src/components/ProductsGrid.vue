@@ -1,19 +1,16 @@
 <template>
-    <div class="products">
-        <div class="product" v-for="item in products" :key="item.node.id">
-            <g-link :to="item.node.path" class="product-link">
-            <g-image
-                :src="item.node.thumbnail"
-                :alt="item.node.title"
-                class="thumbnail"
-            />
-            <h3 class="product-title">{{ item.node.title }}</h3>
-            <div class="categories">
-                <span class="category" v-for="(item, index) in item.node.categories" :key="index">{{ item }}</span>
-            </div>
-            </g-link>
-        </div>
+  <div class="products">
+    <div class="product" v-for="item in products" :key="item.node.id">
+        <g-link :to="item.node.path" class="product-link">
+          <g-image
+            :src="item.node.images[0].src"
+            :alt="item.node.images[0].altText || item.node.title"
+            class="thumbnail"
+          />
+          <h3 class="product-title">{{ item.node.title }}</h3>
+        </g-link>
     </div>
+  </div>
 </template>
 
 <script>
