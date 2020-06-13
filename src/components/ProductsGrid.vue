@@ -1,13 +1,13 @@
 <template>
-    <div class="projects">
-        <div class="project" v-for="item in projects" :key="item.node.id">
-            <g-link :to="item.node.path" class="project-link">
+    <div class="products">
+        <div class="product" v-for="item in products" :key="item.node.id">
+            <g-link :to="item.node.path" class="product-link">
             <g-image
                 :src="item.node.thumbnail"
                 :alt="item.node.title"
                 class="thumbnail"
             />
-            <h3 class="project-title">{{ item.node.title }}</h3>
+            <h3 class="product-title">{{ item.node.title }}</h3>
             <div class="categories">
                 <span class="category" v-for="(item, index) in item.node.categories" :key="index">{{ item }}</span>
             </div>
@@ -19,7 +19,7 @@
 <script>
 export default {
     props: {
-        projects: {
+        products: {
             type: Array,
             required: true
         }
@@ -28,16 +28,16 @@ export default {
 </script>
 
 <style scoped>
-.projects {
+.products {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 4rem;
 }
-.project {
+.product {
   grid-column: auto / span 2;
   text-align: center;
 }
-.project-link {
+.product-link {
   text-decoration: none;
 }
 .thumbnail {
@@ -46,7 +46,7 @@ export default {
   transition: all 0.15s ease;
   box-shadow: 0 0 40px -20px rgba(0,0,0,0.25);
 }
-.project-title {
+.product-title {
   font-size: 1rem;
   color: var(--color-contrast);
   margin: 2rem 0 1rem 0;
@@ -61,16 +61,16 @@ export default {
 .category:last-of-type {
   margin: 0;
 }
-.project:hover .thumbnail {
+.product:hover .thumbnail {
   transform: scale(1.02);
   box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25);
 }
 
 @media (min-width: 920px) {
-  .project {
+  .product {
     grid-column: auto / span 1;
   }
-  .project:nth-child(3n+1) {
+  .product:nth-child(3n+1) {
     grid-column: auto / span 2;
   }
 }

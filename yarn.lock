@@ -868,18 +868,6 @@
     unist-builder "^1.0.4"
     unist-util-visit "^1.4.0"
 
-"@gridsome/source-filesystem@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@gridsome/source-filesystem/-/source-filesystem-0.6.2.tgz#95f65e9fcf03624ba23f8f0bee0779fe8e8b9021"
-  integrity sha512-K1pyXwFYIlABaHq3wqOPyYt4ARzLZuUQ+UZKjDSBT9I0T0qpCbwir5kJMQkR7qY4ONflUrv8fgG6DNSrc1uzbA==
-  dependencies:
-    chokidar "^2.0.4"
-    fs-extra "^7.0.0"
-    globby "^8.0.1"
-    lodash "^4.17.10"
-    mime-types "^2.1.21"
-    slash "^2.0.0"
-
 "@gridsome/transformer-remark@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@gridsome/transformer-remark/-/transformer-remark-0.5.0.tgz#e872e91edc316205c507533395b8f1bc985185a1"
@@ -2470,7 +2458,7 @@ character-reference-invalid@^1.0.0:
   resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz#083329cda0eae272ab3dbbf37e9a382c13af1560"
   integrity sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==
 
-chokidar@^2.0.4, chokidar@^2.1.0, chokidar@^2.1.8:
+chokidar@^2.1.0, chokidar@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.8.tgz#804b3a7b6a99358c3c5c61e71d8728f041cff917"
   integrity sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==
@@ -9633,16 +9621,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typeface-karla@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-karla/-/typeface-karla-0.0.72.tgz#b0eec7f2f13e638d274c0bac6bd0c82379c958e9"
-  integrity sha512-PKqhkf7MxnRMCdWfLXYsY2eGY3R9aGO630P5CCXnndvmfTlEGgXtb6J6kx1UDcCgzNh115Cd0IP5AnFU8cCpKw==
-
-typeface-prata@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-prata/-/typeface-prata-0.0.72.tgz#644785665231ca604253201d5be466e5dfcb8420"
-  integrity sha512-yZAPOaZ/7pXzqolAuRNqKjaVum02IwQdLZf58Xr6oRZFsk27Uqigyf/fN4BLoUwltN0lxKm2vaKO1VjSj2/NIw==
 
 uglify-js@3.4.x:
   version "3.4.10"
