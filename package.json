@@ -1,5 +1,5 @@
 {
-  "name": "itsnwa.com",
+  "name": "Gridsomify.com",
   "private": true,
   "scripts": {
     "build": "gridsome build",
