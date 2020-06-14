@@ -1,7 +1,7 @@
 <template>
   <div class="products">
     <div class="product" v-for="item in products" :key="item.node.id">
-        <g-link :to="item.node.path" class="product-link">
+        <g-link :to="`product/${item.node.handle}`" class="product-link">
           <g-image
             :src="item.node.images[0].src"
             :alt="item.node.images[0].altText || item.node.title"
