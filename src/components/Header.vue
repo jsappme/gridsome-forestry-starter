@@ -3,15 +3,11 @@
         <div class="container">
             <div class="left">
                 <g-link :to="{ name: 'home' }" class="home-link">
-                    <img 
-                        src="../../static/logo.svg"
-                        :alt="settings.site_name" 
-                        class="logo"
-                    />
+                    <h3 class="logo">Gridsomify</h3>
                 </g-link>
             </div>
             <nav class="nav right">
-                <g-link class="nav__link" to="/contact">Say Hi!</g-link>
+                <g-link class="nav__link" to="/contact">Contact us</g-link>
             </nav>
         </div>
     </header>
@@ -49,9 +45,6 @@ export default {
 .home-link {
     text-decoration: none;
 }
-.logo {
-    height: 1.5rem;
-}
 .site-name {
     font-size: 0.9rem;
     font-weight: 700;
@@ -78,5 +71,9 @@ export default {
 }
 .nav > .active {
     border-color: inherit;
+}
+.logo {
+  font-family: "Prata", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  text-transform: none;
 }
 </style>
