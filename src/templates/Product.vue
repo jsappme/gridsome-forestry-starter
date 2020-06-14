@@ -1,108 +1,91 @@
 <template>
   <Layout>
-    <div class="project">
-
-      <div class="container">
-
-        <div class="project-header">
-          <h1 class="project-title" v-html="product.title" />
-          <div class="project-info">
-
-            <div class="categories-container">
-              <div class="categories">
-                <figure class="image">
-                  <img
-                    :src="product.images[0].src"
-                    :alt="product.images[0].altText || product.title">
-                </figure>
-              </div>
-              <br>
-              <div class="columns">
-                <div
-                  v-for="({ node: image }) in product.images.edges"
-                  :key="image.id"
-                  class="column is-3">
-                  <figure class="image is-square">
-                    <img
-                      :src="image.thumbnail"
-                      :alt="image.altText || product.title">
-                  </figure>
-                </div>
-              </div>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-three-fifths">
+          <figure class="image">
+            <img
+              :src="product.images[0].src"
+              :alt="product.images[0].altText || product.title">
+          </figure>
+          <br>
+          <div class="columns">
+            <div
+              v-for="({ node: image }) in product.images.edges"
+              :key="image.id"
+              class="column is-3">
+              <figure class="image is-square">
+                <img
+                  :src="image.thumbnail"
+                  :alt="image.altText || product.title">
+              </figure>
             </div>
-
-            <!--div class="year-container">
-              <span class="label">Year</span>
-              <div v-html="$page.post.date"/>
-            </div-->
           </div>
         </div>
-
-        <h3 class="title is-family-secondary">
-          {{ product.title }}
-        </h3>
-        <h5
-          v-if="currentVariant"
-          class="subtitle">
-          {{ currentVariant.price.amount }}
-        </h5>
-
-        <div v-html="product.descriptionHtml" class="content" />
-
-        <div
-          v-for="option in productOptions"
-          :key="option.id"
-          class="field">
-          <div class="control">
-            <label
-              :for="option.name"
-              class="label">
-              {{ option.name }}
-              <div class="select is-fullwidth">
-                <select
-                  :id="option.name"
-                  v-model="selectedOptions[option.name]">
-                  <option
-                    v-for="value in option.values"
-                    :key="value"
-                    :value="value">
-                    {{ value }}
-                  </option>
-                </select>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <br>
-        <div class="field is-grouped is-grouped-right">
-          <div class="field has-addons is-fullwidth">
+        <div class="column is-two-fifths">
+          <h3 class="title is-family-secondary">
+            {{ product.title }}
+          </h3>
+          <h5
+            v-if="currentVariant"
+            class="subtitle">
+            {{ currentVariant.price.amount }}
+          </h5>
+          <div
+            class="content"
+            v-html="product.descriptionHtml" />
+          <div
+            v-for="option in productOptions"
+            :key="option.id"
+            class="field">
             <div class="control">
               <label
-                class="label"
-                for="quantity">
-                Quantity
+                :for="option.name"
+                class="label">
+                {{ option.name }}
+                <div class="select is-fullwidth">
+                  <select
+                    :id="option.name"
+                    v-model="selectedOptions[option.name]">
+                    <option
+                      v-for="value in option.values"
+                      :key="value"
+                      :value="value">
+                      {{ value }}
+                    </option>
+                  </select>
+                </div>
               </label>
-              <input
-                id="quantity"
-                v-model.number="quantity"
-                class="input quantity"
-                type="number"
-                placeholder="Find a repository">
             </div>
-            <div class="add-to-cart">
-              <button
-                class="button is-primary"
-                @click="addToCart"
-                @keyup.enter="addToCart">
-                Add To Cart
-              </button>
+          </div>
+          <br>
+          <div class="field is-grouped is-grouped-right">
+            <div class="field has-addons is-fullwidth">
+              <div class="control">
+                <label
+                  class="label"
+                  for="quantity">
+                  Quantity
+                </label>
+                <input
+                  id="quantity"
+                  v-model.number="quantity"
+                  class="input quantity"
+                  type="number"
+                  placeholder="Find a repository">
+              </div>
+              <div class="add-to-cart">
+                <button
+                  class="button is-primary"
+                  @click="addToCart"
+                  @keyup.enter="addToCart">
+                  Add To Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </Layout>
 </template>
@@ -197,7 +180,7 @@ query Product ($id: ID!) {
 }
 </page-query>
 
-<style scoped>
+<style lang="scss" scoped>
 .is-fullwidth {
   width: 100%;
   .control {
@@ -211,30 +194,5 @@ query Product ($id: ID!) {
 .add-to-cart {
   display: flex;
   align-items: flex-end;
-}
-.project-header {
-  padding: 20vh 0 4rem 0;
-}
-.project-title {
-  font-size: 4rem;
-  margin: 0 0 4rem 0;
-  padding: 0;
-}
-.project-info {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 0.8rem;
-}
-.project-info > div {
-  margin-right: 4rem;
-}
-.project-info > div:last-of-type {
-  margin: 0;
-}
-.category:after {
-  content: ', '
-}
-.category:last-of-type:after {
-  content: '';
 }
 </style>

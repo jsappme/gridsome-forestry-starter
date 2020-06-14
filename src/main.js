@@ -1,7 +1,9 @@
 import DefaultLayout from "~/layouts/Default.vue";
 import settings from "../data/theme.json";
 
-import "@/assets/code-highlight.css"
+// Styles
+import '~/styles/main.scss'
+import 'typeface-karla'
 import 'typeface-prata'
 
 // Plugins
@@ -16,9 +18,6 @@ import fetch from 'isomorphic-fetch'
 export default function(Vue, { appOptions }) {
 
   Vue.component("Layout", DefaultLayout);
-  appOptions.bodyAttrs = {
-    class: settings.dark_mode ? "dark" : ""
-  };
 
   // Import global plugins
   Vue.use(Vuex)
