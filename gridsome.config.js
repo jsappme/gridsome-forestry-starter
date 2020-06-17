@@ -1,105 +1,107 @@
+// This is where project configuration and plugin options are located.
+// Learn more: https://gridsome.org/docs/config
+
+// Changes here require a server restart.
+// To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome + Shopify 😍Gridsome & Shopify Headless Ecommerce Site Building',
-  siteUrl: 'https://gridsomify.com',
-  siteDescription: 'Gridsomify provides Gridsome Shopify headless ecommerce site building, deployment and integration services. - Gridsome + Shopify 😍',
-  titleTemplate: '%s - Gridsome + Shopify',
-  icon: {
-    favicon: "./src/favicon.png",
-    touchicon: "./src/favicon.png"
-  },
-  templates: {
-    ShopifyProduct: [
-      {
-        path: '/product/:handle',
-        component: './src/templates/Product.vue'
-      }
-    ],
-    ShopifyCollection: [
-      {
-        path: '/collection/:handle',
-        component: './src/templates/Collection.vue'
-      }
-    ]
-  },
+  siteName: 'Algo Crypto Trading',
+  siteDescription: 'Algo Crypto Trading services and products',
+  siteUrl: 'https://algocryptotrading.com',
   plugins: [
-    'gridsome-plugin-robots',
     {
-      use: 'gridsome-plugin-pwa',
+      use: 'gridsome-plugin-tailwindcss',
       options: {
-          title: 'Gridsome + Shopify 😍Gridsome & Shopify Headless Ecommerce Site Builder',
-          description: 'Gridsomify provides Gridsome Shopify headless ecommerce site building, deployment and integration services. - Gridsome + Shopify 😍',// Optional
-          startUrl: '/',
-          display: 'standalone',
-          gcm_sender_id: undefined,
-          statusBarStyle: 'default',
-          manifestPath: 'manifest.json',
-          disableServiceWorker: false,
-          serviceWorkerPath: 'service-worker.js',
-          cachedFileTypes: 'js,json,css,html,png,jpg,jpeg,svg',
-          shortName: 'Gridsomify!',
-          themeColor: '#000000',
-          lang: "en-US",
-          backgroundColor: '#000000',
-          icon: './src/favicon.png', // must be provided like 'src/favicon.png'
-          msTileImage: 'Gridsomify!',
-          msTileColor: '#000000'
+        purgeConfig: {
+          content: [
+            './src/**/*.vue',
+            './src/**/*.js',
+            './src/**/*.jsx',
+            './src/**/*.html',
+            './src/**/*.pug',
+            './src/**/*.md',
+            './docs/**/*.md',
+            './blog/**/*.md',
+          ],
+          whitelist: [
+            'body',
+            'html',
+            'img',
+            'a',
+            'g-image',
+            'g-image--lazy',
+            'g-image--loaded',
+            'active',
+          ],
+          defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+        },
       }
     },
     {
-      use: '@gridsome/plugin-sitemap',
+      use: '@gridsome/vue-remark',
       options: {
-        exclude: ['/exclude-me'],
-        config: {
-          '/collections/*': {
-            changefreq: 'daily',
-            priority: 0.5
-          },
-          '/product/*': {
-            changefreq: 'daily',
-            priority: 0.5
+        typeName: 'Documentation', // Required
+        baseDir: './docs', // Where .md files are located
+        pathPrefix: '/docs', // Add route prefix. Optional
+        template: './src/templates/Documentation.vue', // Optional
+        plugins: [
+          [ 'gridsome-plugin-remark-shiki', { theme: 'Material-Theme-Palenight', skipInline: true } ]
+      ],
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'blog/**/*.md',
+        typeName: 'Post',
+        refs: {
+          tags: {
+            typeName: 'Tag',
+            create: true
           }
         }
       }
     },
     {
-      use: 'gridsome-source-shopify',
+      use: 'gridsome-plugin-rss',
       options: {
-        storeName: process.env.GRIDSOME_SHOPIFY_STOREFRONT,
-        storefrontToken: process.env.GRIDSOME_SHOPIFY_STOREFRONT_TOKEN
-      }
-    },
-    {
-      use: '@gridsome/plugin-google-analytics',
-      options: {
-        id: 'UA-169269904-1'
-      }
-    },
-    {
-      use: 'gridsome-plugin-flexsearch',
-      options: {
-        flexsearch: {
-          profile: 'match'
+        contentTypeName: 'Post',
+        feedOptions: {
+          title: 'Algo Crypto Trading Blog',
+          feed_url: 'https://algocryptotrading.com/rss.xml',
+          site_url: 'https://algocryptotrading.com/'
         },
-        collections: [
-          {
-            typeName: 'ShopifyProduct',
-            indexName: 'Product',
-            fields: ['title', 'handle', 'description']
-          },
-          {
-            typeName: 'ShopifyCollection',
-            indexName: 'Collection',
-            fields: ['title', 'handle', 'description']
-          }
-        ],
-        searchFields: ['title', 'handle', 'tags']
+        feedItemOptions: node => ({
+          title: node.title,
+          description: node.summary,
+          url: 'https://algocryptotrading.com' + node.path,
+          author: 'Herve Fulchiron',
+          date: node.date
+        }),
+        output: {
+          dir: './static',
+          name: 'rss.xml'
+        }
       }
-    }
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
+      options: {
+        cacheTime: 600000, // default
+      }
+    },
   ],
+  templates: {
+    Tag: '/tag/:id'
+  },
   transformers: {
     remark: {
-      plugins: ["@gridsome/remark-prismjs"]
+      plugins: [
+        [ 'gridsome-plugin-remark-shiki', { theme: 'Material-Theme-Palenight', skipInline: true } ]
+      ],
+      externalLinksTarget: '_blank',
+      externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
+      anchorClassName: 'icon icon-link',
     }
-  }
+  },
 }

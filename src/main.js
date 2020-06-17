@@ -1,62 +1,40 @@
-import DefaultLayout from "~/layouts/Default.vue";
-import settings from "../data/theme.json";
+// This is the main.js file. Import global CSS and scripts here.
+// The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
-// Styles
-import '~/styles/main.scss'
-import 'typeface-karla'
-import 'typeface-prata'
+import DefaultLayout from '~/layouts/Default.vue'
+import VueScrollTo from 'vue-scrollto'
+import VueFuse from 'vue-fuse'
 
-// Plugins
-import Vuex from 'vuex'
-import VueApollo from 'vue-apollo'
-import Notifications from 'vue-notification/dist/ssr.js'
+export default function (Vue, { router, head, isClient }) {
+  // Set default layout as a global component
+  Vue.component('Layout', DefaultLayout)
 
-// Dependencies
-import ApolloClient from 'apollo-boost'
-import fetch from 'isomorphic-fetch'
-
-export default function(Vue, { appOptions }) {
-
-  Vue.component("Layout", DefaultLayout);
-
-  // Import global plugins
-  Vue.use(Vuex)
-  Vue.use(VueApollo)
-  Vue.use(Notifications)
-
-  // Create Apollo client
-  const apolloClient = new ApolloClient({
-    fetch,
-    uri: `https://${process.env.GRIDSOME_SHOPIFY_STOREFRONT}.myshopify.com/api/2019-07/graphql.json`,
-    headers: {
-      'X-Shopify-Storefront-Access-Token': process.env.GRIDSOME_SHOPIFY_STOREFRONT_TOKEN
-    }
+  Vue.use(VueScrollTo, {
+    duration: 500,
+    easing: "ease",
   })
 
-  // Add client to vue-apollo provider
-  const apolloProvider = new VueApollo({
-    defaultClient: apolloClient
+  Vue.use(VueFuse)
+
+  head.meta.push({
+    name: 'keywords',
+    content: 'algo,crypto,trading,binance,autotrading,trading bots,machine learning,automl,coder trader,binance api,backtesting,forward testing'
   })
 
-  // Add provider to vue app
-  appOptions.apolloProvider = apolloProvider
+  head.meta.push({
+    name: 'description',
+    content: 'Algo Crypto Trading'
+  })
 
-  // Create Vuex store
-  appOptions.store = new Vuex.Store({
-    state: {
-      cart: []
-    },
-    mutations: {
-      addToCart: (state, newItem) => {
-        const itemExists = state.cart.find(item => item.variantId === newItem.variantId)
+  head.meta.push({
+    name: 'author',
+    content: 'Herve Fulchiron'
+  })
 
-        if (itemExists) itemExists.qty += newItem.qty
-        else state.cart.push(newItem)
-      },
-      removeFromCart: (state, itemId) => {
-        const updatedCart = state.cart.filter(item => item.variantId !== itemId)
-        state.cart = updatedCart
-      }
-    }
+  head.link.push({
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700'
   })
 }
+
+
