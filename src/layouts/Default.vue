@@ -1,9 +1,9 @@
 <template>
   <div class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen" :class="theme">
-    <header class="border-t-14 border-green-700">
+    <header class="border-t-14 border-gray-900">
       <nav class="container mx-auto flex flex-wrap justify-between items-center py-8">
         <div>
-          <g-link to="/"><div class="text-4xl font-bold text-center">Algo Crypto Trading</div></g-link>        
+          <g-link to="/"><div class="text-4xl font-bold text-center">Gridsome Shopify</div></g-link>        
         </div>
         <div class="block lg:hidden">
           <button @click="toggle" class="flex items-center px-3 py-2 border rounded border-gray-500 hover:text-gray-600 hover:border-gray-600">
@@ -21,8 +21,8 @@
             <theme-switcher :theme="theme" @themeChanged="updateTheme" />
           </li>
           <li>
-            <a v-if="$route.path === '/'" href="/#projects" v-scroll-to="'#projects'" class="text-copy-primary hover:text-gray-600">Projects</a>
-            <g-link v-else to="/#projects" class="text-copy-primary hover:text-gray-600">Projects</g-link>
+            <a v-if="$route.path === '/'" href="/#projects" v-scroll-to="'#projects'" class="text-copy-primary hover:text-gray-600">Collections</a>
+            <g-link v-else to="/#projects" class="text-copy-primary hover:text-gray-600">Collections</g-link>
           </li>
           <li>
             <a v-if="$route.path === '/'" href="/#about" v-scroll-to="'#about'" class="text-copy-primary hover:text-gray-600">About</a>
@@ -39,8 +39,8 @@
     <div class="flex-grow">
       <slot/>
     </div>
-    
-    <footer class="bg-green-700 text-white">
+
+    <footer class="bg-gray-900 text-white">
       <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">
           <div>Copyright {{ new Date().getFullYear() }}. All rights reserved. v0.0.2</div>
