@@ -20,7 +20,6 @@ module.exports = {
             './src/**/*.html',
             './src/**/*.pug',
             './src/**/*.md',
-            './docs/**/*.md',
             './blog/**/*.md',
           ],
           whitelist: [
@@ -35,18 +34,6 @@ module.exports = {
           ],
           defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
         },
-      }
-    },
-    {
-      use: '@gridsome/vue-remark',
-      options: {
-        typeName: 'Documentation', // Required
-        baseDir: './docs', // Where .md files are located
-        pathPrefix: '/docs', // Add route prefix. Optional
-        template: './src/templates/Documentation.vue', // Optional
-        plugins: [
-          [ 'gridsome-plugin-remark-shiki', { theme: 'Material-Theme-Palenight', skipInline: true } ]
-      ],
       }
     },
     {
