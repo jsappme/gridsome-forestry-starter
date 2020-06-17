@@ -4,7 +4,7 @@
       <nav class="container mx-auto flex flex-wrap justify-between items-center py-8">
 
         <div class="mx-auto">
-          <g-link to="/"><div class="text-4xl font-bold text-center">Gridsome Shopify</div></g-link>        
+          <g-link to="/"><div class="font-serif text-4xl font-bold text-center">Gridsome Shopify</div></g-link>        
         </div>
 
         <div class="block lg:hidden">
@@ -35,6 +35,15 @@
             </li>
             <li>
               <search-input />
+            </li>
+            <li>
+              <div class="">
+                <g-link
+                  to="/cart"
+                  class="lowercase">
+                  cart - {{ cart.length }} Item{{ cart.length !== 1 ? 's' : '' }}
+                </g-link>
+              </div>
             </li>
           </ul>
         </div>
@@ -116,6 +125,7 @@ export default {
     return {
       isOpen: false,
       theme: '',
+      searchTerm: ''
     }
   },
   methods: {
@@ -124,6 +134,19 @@ export default {
     },
     updateTheme(theme) {
       this.theme = theme
+    }
+  },
+  computed: {
+    cart () { return this.$store.state.cart },
+    searchResults () {
+      const searchTerm = this.searchTerm
+      if (searchTerm.length < 3) return []
+      return this.$search.search({ query: searchTerm, limit: 5, suggest: true })
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.searchTerm = ''
     }
   }
 }
