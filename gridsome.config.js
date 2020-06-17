@@ -10,31 +10,7 @@ module.exports = {
   siteUrl: 'https://algocryptotrading.com',
   plugins: [
     {
-      use: 'gridsome-plugin-tailwindcss',
-      options: {
-        purgeConfig: {
-          content: [
-            './src/**/*.vue',
-            './src/**/*.js',
-            './src/**/*.jsx',
-            './src/**/*.html',
-            './src/**/*.pug',
-            './src/**/*.md',
-            './blog/**/*.md',
-          ],
-          whitelist: [
-            'body',
-            'html',
-            'img',
-            'a',
-            'g-image',
-            'g-image--lazy',
-            'g-image--loaded',
-            'active',
-          ],
-          defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-        },
-      }
+      use: 'gridsome-plugin-tailwindcss'
     },
     {
       use: '@gridsome/source-filesystem',
