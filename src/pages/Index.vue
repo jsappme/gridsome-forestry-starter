@@ -14,7 +14,49 @@
 export default {
   metaInfo: {
     title: 'Home'
+  },
+  computed: {
+    collection () { return this.$page.allShopifyCollection.edges.length && this.$page.allShopifyCollection.edges[ 0 ].node },
+    featuredProducts () { return this.$page.allShopifyProduct.edges }
   }
 }
 </script>
 
+<page-query>
+query ShopifyProducts {
+  allShopifyCollection (limit: 1) {
+    edges {
+      node {
+        id
+        handle
+        title
+        descriptionHtml
+        image {
+          altText
+          src: transformedSrc(maxWidth: 800, maxHeight: 800, crop: CENTER)
+        }
+      }
+    }
+  }
+  allShopifyProduct (limit: 6) {
+    edges {
+      node {
+        id
+        title
+        handle
+        descriptionHtml
+        priceRange {
+          minVariantPrice {
+            amount(format: true)
+          }
+        }
+        images (limit: 1) {
+          id
+          altText
+          src: transformedSrc (maxWidth: 400, maxHeight: 300, crop: CENTER)
+        }
+      }
+    }
+  }
+}
+</page-query>
