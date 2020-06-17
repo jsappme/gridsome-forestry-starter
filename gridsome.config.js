@@ -13,19 +13,6 @@ module.exports = {
       use: 'gridsome-plugin-tailwindcss'
     },
     {
-      use: '@gridsome/source-filesystem',
-      options: {
-        path: 'blog/**/*.md',
-        typeName: 'Post',
-        refs: {
-          tags: {
-            typeName: 'Tag',
-            create: true
-          }
-        }
-      }
-    },
-    {
       use: '@gridsome/plugin-sitemap',
       options: {
         cacheTime: 600000, // default
@@ -33,7 +20,6 @@ module.exports = {
     },
   ],
   templates: {
-    Tag: '/tag/:id'
   },
   transformers: {
   },

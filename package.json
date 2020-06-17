@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@gridsome/plugin-sitemap": "^0.3.0",
-    "@gridsome/source-filesystem": "^0.6.2",
     "axios": "^0.19.2",
     "gridsome": "^0.7.17",
     "vue-scrollto": "^2.18.1"
