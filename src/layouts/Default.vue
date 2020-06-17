@@ -26,9 +26,9 @@
             <a v-if="$route.path === '/'" href="/#contact" v-scroll-to="'#contact'" class="text-copy-primary hover:text-gray-600">Contact</a>
             <g-link v-else to="/#contact" class="text-copy-primary hover:text-gray-600">Contact</g-link>
           </li>
-          <li>
+          <!--li>
             <g-link to="/blog" class="text-copy-primary hover:text-gray-600">Blog</g-link>
-          </li>
+          </li-->
         </ul>
       </nav>
     </header>
@@ -40,9 +40,6 @@
       <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">
           <div>Copyright {{ new Date().getFullYear() }}. All rights reserved. v0.0.2</div>
-        </div>
-        <div class="text-left ml-auto mr-2">
-           <h2 class="font-bold" id="contact">Get in touch with me &nbsp;</h2>
         </div>
         <ul class="flex items-center">
             <li class="mr-8">
