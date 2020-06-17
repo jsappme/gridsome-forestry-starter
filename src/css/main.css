@@ -25,10 +25,6 @@
   background: #f0fff4;
 }
 
-.theme-dark .markdown-body {
-    color: #24292e;
-}
-
 .theme-dark .search-highlighted {
   background: #2d3748;
 }
@@ -48,10 +44,6 @@
   --text-copy-secondary: #e2e8f0;
 
   --border-border-color-primary:  #1a202c;
-}
-
-.theme-dark .markdown-body {
-    color: #cbd5e0;
 }
 
 .theme-dark nav .active {
